@@ -1,8 +1,9 @@
 package com.example.addon;
 
 import com.example.addon.commands.CommandExample;
+import com.example.addon.commands.ChatCommand;
 import com.example.addon.hud.HudExample;
-import com.example.addon.modules.ModuleExample;
+import com.example.addon.modules.*;
 import com.mojang.logging.LogUtils;
 import meteordevelopment.meteorclient.addons.GithubRepo;
 import meteordevelopment.meteorclient.addons.MeteorAddon;
@@ -11,7 +12,14 @@ import meteordevelopment.meteorclient.systems.hud.Hud;
 import meteordevelopment.meteorclient.systems.hud.HudGroup;
 import meteordevelopment.meteorclient.systems.modules.Category;
 import meteordevelopment.meteorclient.systems.modules.Modules;
+import meteordevelopment.meteorclient.utils.*;
 import org.slf4j.Logger;
+import static net.minecraft.server.command.CommandManager.*;
+import meteordevelopment.meteorclient.events.game.ReceiveMessageEvent;
+import meteordevelopment.meteorclient.events.game.*;
+import java.awt.Event;
+
+
 
 public class AddonTemplate extends MeteorAddon {
     public static final Logger LOG = LogUtils.getLogger();
@@ -24,9 +32,13 @@ public class AddonTemplate extends MeteorAddon {
 
         // Modules
         Modules.get().add(new ModuleExample());
+        Modules.get().add(new AutoDecode());
 
         // Commands
         Commands.add(new CommandExample());
+        Commands.add(new ChatCommand());
+        
+        
 
         // HUD
         Hud.get().register(HudExample.INFO);
@@ -46,4 +58,6 @@ public class AddonTemplate extends MeteorAddon {
     public GithubRepo getRepo() {
         return new GithubRepo("MeteorDevelopment", "meteor-addon-template");
     }
+    
+    
 }

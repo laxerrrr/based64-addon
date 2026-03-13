@@ -13,8 +13,18 @@ import meteordevelopment.meteorclient.utils.render.color.SettingColor;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import meteordevelopment.meteorclient.events.game.ReceiveMessageEvent;
+import java.util.Base64;
+import net.minecraft.text.HoverEvent;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Style;
+import net.minecraft.text.Text;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
-public class ModuleExample extends Module {
+
+public class AutoDecode extends Module {
     private final SettingGroup sgGeneral = this.settings.getDefaultGroup();
     private final SettingGroup sgRender = this.settings.createGroup("Render");
 
@@ -42,8 +52,8 @@ public class ModuleExample extends Module {
     /**
      * The {@code name} parameter should be in kebab-case.
      */
-    public ModuleExample() {
-        super(AddonTemplate.CATEGORY, "world-origin", "An example module that highlights the center of the world.");
+    public AutoDecode() {
+        super(AddonTemplate.CATEGORY, "Auto Decode", "Automatically decodes all Based64 messages in chat");
     }
 
     /**
@@ -51,16 +61,15 @@ public class ModuleExample extends Module {
      * Requires {@link AddonTemplate#getPackage()} to be setup correctly, will fail silently otherwise.
      */
     @EventHandler
-    private void onRender3d(Render3DEvent event) {
-        // Create & stretch the marker object
-        Box marker = new Box(BlockPos.ORIGIN);
-        marker.stretch(
-            scale.get() * marker.getLengthX(),
-            scale.get() * marker.getLengthY(),
-            scale.get() * marker.getLengthZ()
-        );
+    private void onMessageReceive(ReceiveMessageEvent event) {
+        Text message = event.getMessage();
+        String messageString = message.getString();
 
-        // Render the marker based on the color setting
-        event.renderer.box(marker, color.get(), color.get(), ShapeMode.Both, 0);
+        if (messageString.startsWith("[Begin Based64] ")) {
+            
+            byte[] decodedBytes = Base64.getDecoder().decode(messageString);
+            String decodedString = new String(decodedBytes);
+            info("Decoded Based64 message:" + decodedString.replace("[Begin Based64] ", ""));
+        }
     }
 }
