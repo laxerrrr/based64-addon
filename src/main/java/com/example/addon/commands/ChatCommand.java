@@ -46,5 +46,3 @@ public class ChatCommand extends Command {
         }));
     }
 }
-
-

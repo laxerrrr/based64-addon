@@ -66,10 +66,10 @@ public class AutoDecode extends Module {
         String messageString = message.getString();
 
         if (messageString.startsWith("[Begin Based64] ")) {
-            
-            byte[] decodedBytes = Base64.getDecoder().decode(messageString);
+        	String trimmedString = messageString.replace("[Begin Based64] ", "");
+            byte[] decodedBytes = Base64.getDecoder().decode(trimmedString);
             String decodedString = new String(decodedBytes);
-            info("Decoded Based64 message:" + decodedString.replace("[Begin Based64] ", ""));
+            info("Decoded Based64 message: " + decodedString);
         }
     }
 }
