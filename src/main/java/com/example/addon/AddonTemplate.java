@@ -1,6 +1,4 @@
 package com.example.addon;
-
-import com.example.addon.commands.CommandExample;
 import com.example.addon.commands.ChatCommand;
 import com.example.addon.hud.HudExample;
 import com.example.addon.modules.*;
@@ -31,17 +29,20 @@ public class AddonTemplate extends MeteorAddon {
         LOG.info("Initializing Meteor Addon Template");
 
         // Modules
-        Modules.get().add(new ModuleExample());
-        Modules.get().add(new AutoDecode());
+
+
 
         // Commands
-        Commands.add(new CommandExample());
+
         Commands.add(new ChatCommand());
-        
-        
+
+
+
 
         // HUD
         Hud.get().register(HudExample.INFO);
+
+
     }
 
     @Override
@@ -58,6 +59,6 @@ public class AddonTemplate extends MeteorAddon {
     public GithubRepo getRepo() {
         return new GithubRepo("MeteorDevelopment", "meteor-addon-template");
     }
-    
-    
+
+
 }
