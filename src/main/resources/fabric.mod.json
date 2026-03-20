@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "addon-template",
+  "id": "based64-addon",
   "version": "${version}",
   "name": "Based64",
   "description": "A meteor client addon for free speech on 2b2t.",
@@ -15,7 +15,7 @@
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "com.example.addon.AddonTemplate"
+      "com.based64.addon.AddonTemplate"
     ]
   },
   "mixins": [

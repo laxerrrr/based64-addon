@@ -9,7 +9,7 @@ Well suffer no more! Based64 is here to help!
 
 - Clone the repo
 - Build using `gradlew build` 
-- Run the mod with Meteor.
+- Run the mod with Meteor on 1.21.4. (More versions will be available in the future!)
   
 ### How to use
 Use the command `.b [message]` to send a base64 encoded message!

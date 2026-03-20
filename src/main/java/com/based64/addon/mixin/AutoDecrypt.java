@@ -1,13 +1,7 @@
-package com.example.addon.mixin;
+package com.based64.addon.mixin;
 
-import com.mojang.brigadier.Message;
 import meteordevelopment.meteorclient.mixininterface.IChatHud;
-import meteordevelopment.meteorclient.mixininterface.IChatHudLine;
-import meteordevelopment.meteorclient.utils.player.ChatUtils;
-import net.fabricmc.fabric.api.event.Event;
 import net.minecraft.client.gui.hud.ChatHud;
-import net.minecraft.client.gui.hud.ChatHudLine;
-import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.gui.hud.MessageIndicator;
 import net.minecraft.network.message.MessageSignatureData;
 import net.minecraft.text.Text;
@@ -17,10 +11,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import net.minecraft.network.packet.s2c.play.ChatMessageS2CPacket;
+
 import java.util.Base64;
-import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static org.apache.commons.lang3.StringUtils.split;
 
