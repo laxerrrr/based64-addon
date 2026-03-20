@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "net.fabricmc.fabric.mixin.loot",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "JsonDataLoaderMixin",
+    "ReloadableRegistriesMixin",
+    "LootPoolAccessor",
+    "LootPoolBuilderMixin",
+    "LootTableAccessor",
+    "LootTableBuilderMixin",
+    "ResourceFinderAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

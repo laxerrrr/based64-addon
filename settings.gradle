@@ -8,3 +8,5 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+include 'fabric-api-base'
+include 'fabric-message-api-v1'
