@@ -18,7 +18,7 @@ public class AddonTemplate extends MeteorAddon {
 
     @Override
     public void onInitialize() {
-        LOG.info("Initializing Meteor Addon Template");
+        LOG.info("Initializing Based64");
         Commands.add(new ChatCommand());
     }
 
