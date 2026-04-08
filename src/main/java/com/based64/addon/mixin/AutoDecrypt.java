@@ -41,10 +41,13 @@ public abstract class AutoDecrypt implements IChatHud {
         String messageString = message.toString();
         if (messageString.contains("[Begin Based64]%")) {
             String[] splitString = split(messageString, "%");
-            byte[] Bytes = Base64.getDecoder().decode(splitString[1]);
-            String byteString = new String(Bytes);
-            message = Text.literal(byteString);
-            meteor$add(message, 0);
+            if (!splitString[1].matches("^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)?$")) {}
+            else {
+                byte[] Bytes = Base64.getDecoder().decode(splitString[1]);
+                String byteString = new String(Bytes);
+                message = Text.literal(byteString);
+                meteor$add(message, 0);
+            }
 
 
         }
