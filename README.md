@@ -18,6 +18,12 @@ As of right now, messages are automatically decoded. (This includes your own!)
 
 You can expect a cleaner, and more featureful Based64 experience in the future.
 
+### Coming Soon
+
+- Sending and recieving images in chat through imgur.
+- Other forms of encoding. 
+
+
 ## License
 
 This project is available under the CC0 license. Feel free to use it for your own projects.
